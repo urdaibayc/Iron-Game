@@ -1,5 +1,6 @@
 import pygame
 from menu import *
+from settings import *
 
 class Game():
 
@@ -7,7 +8,7 @@ class Game():
         pygame.init()
         self.running, self.playing = True, False
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
-        self.DISPLAY_W, self.DISPLAY_H = 960, 540
+        self.DISPLAY_W, self.DISPLAY_H = DISPLAY_W, DISPLAY_H
         self.window = pygame.display.set_mode(((self.DISPLAY_W, self.DISPLAY_H))) # Create a canvas on which to display everything
         self.display = pygame.Surface((self.DISPLAY_W, self.DISPLAY_H)) # Create a surface
         #self.font_name = 'font.TTF'
@@ -17,6 +18,7 @@ class Game():
         self.options = OptionsMenu(self)
         self.credits = CreditsMenu(self)
         self.curr_menu = self.main_menu
+        self.game_board = GameBoard(self)
 
     def game_loop(self):
         """Controls the game states, resets key flags to False"""
@@ -25,19 +27,22 @@ class Game():
             if self.START_KEY:
                 self.playing = False
             self.display.fill(self.BLACK) # surface
-            self.draw_text('Thanks for playing', 20, self.DISPLAY_W/2, self.DISPLAY_H/2)
+            self.draw_text('Thanks for playing', GAME_FONT_SIZE, self.DISPLAY_W/2, self.DISPLAY_H/2)
             self.window.blit(self.display, (0,0))
             pygame.display.update() # "send to monitor"
             self.reset_keys() # sets key flags to false
 
 
     def check_events(self):
+        # TODO: set escape key to exit game
         """sets key flags to True if triggered by the user"""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running, self.playing = False, False
                 self.curr_menu.run_display = False
             if event.type == pygame.KEYDOWN:
+                # if event.type == pygame.K_ESCAPE:
+                #     exit()
                 if event.key == pygame.K_RETURN:
                     self.START_KEY = True
                 if event.key == pygame.K_BACKSPACE:
