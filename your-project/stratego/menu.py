@@ -1,12 +1,12 @@
 import pygame
-import MENU_CURSOR_W,MENU_CURSOR_H,MENU_FONT_SIZE
+from stratego import MENU_CURSOR_W,MENU_CURSOR_H,MENU_FONT_SIZE
 
 class Menu():
     def __init__(self, game):
         self.game = game
         self.mid_w, self.mid_h = self.game.DISPLAY_W/2, self.game.DISPLAY_H/2
         self.run_display = True
-        self.cursor_rect = pygame.Rect(0,0,MENU_CURSOR_W,MENU_CURSOR_H) # Rect(x,y,w,h)
+        self.cursor_rect = pygame.Rect(0,0,MENU_CURSOR_W,MENU_CURSOR_H)
         self.offset = -100
 
     def draw_cursor(self):
@@ -14,7 +14,7 @@ class Menu():
 
     def blit_screen(self):
         self.game.window.blit(self.game.display, (0,0))
-        pygame.display.update() # "send to monitor"
+        pygame.display.update()
         self.game.reset_keys()
 
 class MainMenu(Menu):

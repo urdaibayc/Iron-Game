@@ -1,6 +1,7 @@
 import pygame
-from menu import *
-import DISPLAY_H, DISPLAY_W
+from stratego.menu import *
+from stratego.game_board import *
+from stratego import DISPLAY_H, DISPLAY_W
 
 class Game():
 
@@ -14,11 +15,12 @@ class Game():
         #self.font_name = 'font.TTF'
         self.font_name = pygame.font.get_default_font()
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
-        self.main_menu = MainMenu(self) # in main menu we reference the game, hense (self), game passes itself as a parameter
+        self.main_menu = MainMenu(self)
         self.options = OptionsMenu(self)
         self.credits = CreditsMenu(self)
         self.curr_menu = self.main_menu
         self.game_board = GameBoard(self)
+
 
     def game_loop(self):
         """Controls the game states, resets key flags to False"""
@@ -27,20 +29,19 @@ class Game():
             if self.START_KEY:
                 self.playing = False
             self.game_board.display_board()
-            pygame.display.update() # "send to monitor"
-            self.reset_keys() # sets key flags to false
+            pygame.display.update()
+            self.reset_keys()
 
 
     def check_events(self):
-        # TODO: set escape key to exit game
+        # TODO: set esc key
         """sets key flags to True if triggered by the user"""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running, self.playing = False, False
                 self.curr_menu.run_display = False
             if event.type == pygame.KEYDOWN:
-                # if event.type == pygame.K_ESCAPE:
-                #     exit()
+
                 if event.key == pygame.K_RETURN:
                     self.START_KEY = True
                 if event.key == pygame.K_BACKSPACE:
