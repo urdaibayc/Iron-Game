@@ -14,7 +14,7 @@ class Menu():
 
     def blit_screen(self):
         self.game.window.blit(self.game.display, (0,0))
-        pygame.display.update()
+        pygame.display.update() # "send to monitor"
         self.game.reset_keys()
 
 class MainMenu(Menu):
