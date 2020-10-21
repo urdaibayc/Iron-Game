@@ -1,4 +1,5 @@
 import pygame
+import MENU_CURSOR_W,MENU_CURSOR_H,MENU_FONT_SIZE
 
 class Menu():
     def __init__(self, game):

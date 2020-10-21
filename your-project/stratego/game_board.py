@@ -1,4 +1,5 @@
 from menu import blit_screen
+import BOARD_CURSOR_W, BOARD_CURSOR_H, GAME_FONT_SIZE
 
 class GameBoard():
     def __init__(self, game):
@@ -11,9 +12,8 @@ class GameBoard():
             self.game.check_events()
             self.check_input()
             self.game.display.fill(self.game.BLACK)
-
-
-        self.draw_text('Thanks for playing', GAME_FONT_SIZE, self.DISPLAY_W/2, self.DISPLAY_H/2)
+            self.draw_text('Thanks for playing', GAME_FONT_SIZE, self.DISPLAY_W/2, self.DISPLAY_H/2)
+            self.blit_screen()
 
     def check_input(self):
         pass
@@ -21,4 +21,4 @@ class GameBoard():
     def move_cursor(self):
         pass
 
-blit_screen()
+#blit_screen()

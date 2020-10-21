@@ -1,6 +1,6 @@
 import pygame
 from menu import *
-from settings import *
+import DISPLAY_H, DISPLAY_W
 
 class Game():
 
@@ -26,9 +26,7 @@ class Game():
             self.check_events()
             if self.START_KEY:
                 self.playing = False
-            self.display.fill(self.BLACK) # surface
-            self.draw_text('Thanks for playing', GAME_FONT_SIZE, self.DISPLAY_W/2, self.DISPLAY_H/2)
-            self.window.blit(self.display, (0,0))
+            self.game_board.display_board()
             pygame.display.update() # "send to monitor"
             self.reset_keys() # sets key flags to false
 
