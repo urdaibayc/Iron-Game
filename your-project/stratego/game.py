@@ -46,7 +46,8 @@ class Game():
                 self.curr_menu.run_display = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    self.ESC_KEY == True
+                    self.running, self.playing = False, False
+                    self.curr_menu.run_display = False
                 if event.key == pygame.K_RETURN:
                     self.START_KEY = True
                 if event.key == pygame.K_BACKSPACE:
