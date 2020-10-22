@@ -5,7 +5,10 @@ class GameBoard():
     def __init__(self, game):
         self.game = game
         self.titlex, self.titley = self.game.DISPLAY_W/2, self.game.DISPLAY_H/11
-        self.cursor_rect = pygame.Rect(0, 0, BOARD_CURSOR_W, BOARD_CURSOR_H)
+        self.cursor_rect = pygame.Surface((100,100))
+        self.cursor_rectx = 0
+        self.cursor_recty = 0
+
 
     def display_board(self):
         while self.game.playing == True:
@@ -13,15 +16,14 @@ class GameBoard():
             self.check_input()
             self.game.display.fill(self.game.BLACK)
             self.game.draw_text('Stratego-Hack', GAME_FONT_SIZE, self.titlex, self.titley)
+            self.draw_board_cursor()
             # draw grid
             # draw cursor
             self.blit_screen()
 
     def draw_board_cursor(self):
-        pygame.draw_rect()
-        self.game.draw_item(B,self.cursor_rect,x , y)
-        # self.game.draw_text('->', 50,self.cursor_rect.x, self.cursor_rect.y)
-        pass
+        pygame.draw.rect(self.cursor_rect,BOARD_CURSOR_COLOR,(0,0,50,50),0)
+        self.game.draw_item(self.cursor_rect,(self.cursor_rectx, self.cursor_recty))
 
     def blit_screen(self):
         self.game.window.blit(self.game.display, (0,0))

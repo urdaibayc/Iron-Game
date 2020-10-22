@@ -12,7 +12,7 @@ class Game():
         pygame.display.set_caption("StrategoHackPy")
         # pygame.display.set_icon(icon)
         self.running, self.playing = True, False
-        self.UP_KEY, self.DOWN_KEY,  self.RIGHT_KEY,  self.LEFT_KEY, self.START_KEY, self.BACK_KEY, self.ESC_KEY = False, False, False, False, False, False, False
+        self.UP_KEY, self.DOWN_KEY,  self.RIGHT_KEY,  self.LEFT_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False, False, False
         self.DISPLAY_W, self.DISPLAY_H = DISPLAY_W, DISPLAY_H
         self.window = pygame.display.set_mode(((self.DISPLAY_W, self.DISPLAY_H))) # Create a canvas on which to display everything
         self.display = pygame.Surface((self.DISPLAY_W, self.DISPLAY_H)) # Create a surface
@@ -72,5 +72,10 @@ class Game():
         text_rect.center = (x,y) # coordinates
         self.display.blit(text_surface,text_rect)
 
-    def draw_item(self, item_rect, x, y):
-        self.display.blit(item_rect,t_rect)
+    def draw_item(self,surface,pos):
+        """
+        Takes as parameters color, a rect object, and a tuple of x y coordinates.
+        draws the rect at the game surface.
+        """
+        # pygame.draw.rect(rectangulo, (119,179,0),(0,0,100,100), 3)
+        self.display.blit(surface, pos)
