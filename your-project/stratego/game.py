@@ -73,9 +73,4 @@ class Game():
         self.display.blit(text_surface,text_rect)
 
     def draw_item(self,surface,pos):
-        """
-        Takes as parameters color, a rect object, and a tuple of x y coordinates.
-        draws the rect at the game surface.
-        """
-        # pygame.draw.rect(rectangulo, (119,179,0),(0,0,100,100), 3)
         self.display.blit(surface, pos)
