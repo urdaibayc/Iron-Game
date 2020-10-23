@@ -15,10 +15,10 @@ class Game():
         self.running, self.playing = True, False
         self.UP_KEY, self.DOWN_KEY,  self.RIGHT_KEY,  self.LEFT_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False, False, False
         self.DISPLAY_W, self.DISPLAY_H = DISPLAY_W, DISPLAY_H
-        self.window = pygame.display.set_mode(((self.DISPLAY_W, self.DISPLAY_H))) # Create a canvas on which to display everything
-        self.display = pygame.Surface((self.DISPLAY_W, self.DISPLAY_H)) # Create a surface
+        self.window = pygame.display.set_mode(((self.DISPLAY_W, self.DISPLAY_H)))
+        self.display = pygame.Surface((self.DISPLAY_W, self.DISPLAY_H))
         #self.font_name = 'font.TTF'
-        #self.side_bord_rect = self.create_surface(self.DISPLAY_H,SIDE_BAR_W)
+        self.board = pygame.Surface((self.DISPLAY_H-10, self.DISPLAY_W-10))
         self.font_name = pygame.font.get_default_font()
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
         self.main_menu = MainMenu(self)
