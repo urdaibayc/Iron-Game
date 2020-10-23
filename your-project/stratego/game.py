@@ -9,24 +9,51 @@ class Game():
 
     def __init__(self):
         # TODO: fix icon
+
+        #########################
+        #### Pygame & window ####
+        #########################
         pygame.init()
         pygame.display.set_caption("StrategoHackPy")
         # pygame.display.set_icon(icon)
-        self.running, self.playing = True, False
-        self.UP_KEY, self.DOWN_KEY,  self.RIGHT_KEY,  self.LEFT_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False, False, False
         self.DISPLAY_W, self.DISPLAY_H = DISPLAY_W, DISPLAY_H
         self.window = pygame.display.set_mode(((self.DISPLAY_W, self.DISPLAY_H)))
         self.display = pygame.Surface((self.DISPLAY_W, self.DISPLAY_H))
+
+        ##########################
+        #### Game flags ##########
+        ##########################
+        self.running, self.playing = True, False
+        self.UP_KEY, self.DOWN_KEY,  self.RIGHT_KEY,  self.LEFT_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False, False, False
         #self.font_name = 'font.TTF'
-        self.board = pygame.Surface((self.DISPLAY_H-10, self.DISPLAY_W-10))
+
+        ##########################
+        #### BOARD dimentions ####
+        ##########################
+        self.board_rect =  pygame.Rect(0, 0, GAME_BOARD_H, GAME_BOARD_W)
+        self.side_bar_rect = pygame.Rect(0, 0, GAME_BOARD_H, DISPLAY_W - GAME_BOARD_W)
+        ROWS, COLS = 10
+        BLOCK_SIZE =
+
+        ##########################
+        #### Text, fonts, etc. ###
+        ##########################
         self.font_name = pygame.font.get_default_font()
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
+
+        ##########################
+        #### CLasses #############
+        ##########################
         self.main_menu = MainMenu(self)
         self.options = OptionsMenu(self)
         self.credits = CreditsMenu(self)
         self.curr_menu = self.main_menu
         self.game_board = GameBoard(self)
         self.side_bar = SideBar(self)
+
+        ###########################
+        #### Game Loop ############
+        ###########################
 
     def game_loop(self):
         """Controls the game states, resets key flags to False"""
@@ -39,6 +66,10 @@ class Game():
             # self.side_bar.display_side_bar()
             pygame.display.update()
             self.reset_keys()
+
+        ###########################
+        #### INPUT & flags ########
+        ###########################
 
     def check_events(self):
         # TODO: set esc key
@@ -68,6 +99,10 @@ class Game():
         """sets key flags to false"""
         self.UP_KEY, self.DOWN_KEY, self.RIGHT_KEY, self.LEFT_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False, False, False
 
+        ###########################
+        #### Draw & blit ##########
+        ###########################
+
     def draw_text(self, text, size, x,y):
         font = pygame.font.Font(self.font_name, size)
         text_surface = font.render(text, True, self.WHITE) # font.render(text, antialiasing, color)
@@ -75,5 +110,5 @@ class Game():
         text_rect.center = (x,y) # coordinates
         self.display.blit(text_surface,text_rect)
 
-    def blit_item(self, target, surface, pos):
-        self.target.blit(surface, pos)
+    def blit_item(self, surface, pos):
+        self.display.blit(surface, pos)

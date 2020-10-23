@@ -5,21 +5,20 @@ class GameBoard():
     # TODO: calcular BOARD_SIDE_X, BOARD_SIDE_X & add to class variables
     def __init__(self, game):
         self.game = game
-        self.board = self.game.board
         self.board_color = GAME_GRID_BACKGROUND
         self.board_grid_color = GAME_GRID_COLOR
+
+        ##########################
+        #### board grid ##########
+        ##########################
         self.block_rect = (self.board.get_height()/10, self.board.get_width()/10)
-        self.block = pygame.Surface(self.block_rect)
+
+
         self.cursor_rectx = 0
         self.cursor_recty = 0
 
     def draw_grid(self):
-        grid_x = [x * self.block.get_width() for x in range(10)]
-        grid_y = [y * self.block.get_height() for y in range(10)]
-        for i in range(len(grid_y)):
-            for j in range(len(grid_x)):
-                pygame.draw.rect(self.block,self.board_grid_color,(0, 0, self.block.get_height(),self.block.get_width()),4)
-                self.board.blit(self.block, (grid_x[j], grid_y[i]))
+
 
     def display_board(self):
         while self.game.playing == True:
