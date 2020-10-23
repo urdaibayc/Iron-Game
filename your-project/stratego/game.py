@@ -2,7 +2,8 @@ import os
 import pygame
 from stratego.menu import *
 from stratego.game_board import *
-from stratego import DISPLAY_H, DISPLAY_W
+from stratego.side_bar import *
+from stratego import *
 
 class Game():
 
@@ -17,6 +18,7 @@ class Game():
         self.window = pygame.display.set_mode(((self.DISPLAY_W, self.DISPLAY_H))) # Create a canvas on which to display everything
         self.display = pygame.Surface((self.DISPLAY_W, self.DISPLAY_H)) # Create a surface
         #self.font_name = 'font.TTF'
+        #self.side_bord_rect = self.create_surface(self.DISPLAY_H,SIDE_BAR_W)
         self.font_name = pygame.font.get_default_font()
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
         self.main_menu = MainMenu(self)
@@ -24,7 +26,7 @@ class Game():
         self.credits = CreditsMenu(self)
         self.curr_menu = self.main_menu
         self.game_board = GameBoard(self)
-
+        self.side_bar = SideBar(self)
 
     def game_loop(self):
         """Controls the game states, resets key flags to False"""
@@ -32,10 +34,11 @@ class Game():
             self.check_events()
             if self.START_KEY:
                 self.playing = False
+
             self.game_board.display_board()
+            # self.side_bar.display_side_bar()
             pygame.display.update()
             self.reset_keys()
-
 
     def check_events(self):
         # TODO: set esc key
@@ -72,5 +75,5 @@ class Game():
         text_rect.center = (x,y) # coordinates
         self.display.blit(text_surface,text_rect)
 
-    def draw_item(self,surface,pos):
-        self.display.blit(surface, pos)
+    def blit_item(self, target, surface, pos):
+        self.target.blit(surface, pos)

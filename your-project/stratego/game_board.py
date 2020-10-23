@@ -5,37 +5,50 @@ class GameBoard():
     # TODO: calcular BOARD_SIDE_X, BOARD_SIDE_X & add to class variables
     def __init__(self, game):
         self.game = game
-        self.board_side_rect = pygame.Surface((BOARD_SIDE_H,BOARD_SIDE_W))
-        self.titlex, self.titley = self.game.DISPLAY_W/2, self.game.DISPLAY_H/15
-        self.cursor_rect = pygame.Surface((BOARD_CURSOR_H,BOARD_CURSOR_W))
+        self.board_w = GAME_GRID_W
+        self.board_h = GAME_GRID_H -10
+        self.board = pygame.Surface((self.board_h, self.board_w))
+        self.board_color = GAME_GRID_BACKGROUND
+        self.board_grid_color = GAME_GRID_COLOR
+        self.block_rect = (BOARD_CURSOR_H, BOARD_CURSOR_W)
+        self.block = pygame.Surface(self.block_rect)
+        self.cursor = pygame.Surface((BOARD_CURSOR_H,BOARD_CURSOR_W))
         self.cursor_rectx = 0
         self.cursor_recty = 0
+
+    def draw_grid(self):
+
+        grid_x = [x * BOARD_CURSOR_W for x in range(10)]
+        grid_y = [y * BOARD_CURSOR_H for y in range(10)]
+        for i in range(len(grid_y)):
+            for j in range(len(grid_x)):
+                pygame.draw.rect(self.block,self.board_grid_color,(0, 0, BOARD_CURSOR_H,BOARD_CURSOR_W),4)
+                self.board.blit(self.block, (grid_x[j], grid_y[i]))
 
     def display_board(self):
         while self.game.playing == True:
             self.game.check_events()
             self.check_input()
-            self.game.display.fill(self.game.BLACK)
-            self.game.draw_item(self.board_side_rect, (BOARD_SIDE_X, BOARD_SIDE_Y))
-            # self.game.draw_text('Stratego-Hack', GAME_FONT_SIZE, self.titlex, self.titley)
-            self.draw_board_side()
-            self.draw_board_cursor()
+            self.board.fill(self.board_color)
             # draw grid
+            self.draw_grid()
             # draw cursor
             self.blit_screen()
 
-    def draw_board_side(self):
-        pygame.draw.rect(self.board_side_rect,BOARD_SIDE_COLOR,(0,0,BOARD_SIDE_H,BOARD_SIDE_W),0)
-        self.game.draw_item(self.board_side_rect,(BOARD_SIDE_X, BOARD_SIDE_Y))
+
+
+    def blit_board(self):
+        self.game.blit_item(self, display, self.board, (0, 5))
+        pass
 
     def draw_board_cursor(self):
+        # TODO: fix cursor draw settings
         pygame.draw.rect(self.cursor_rect,BOARD_CURSOR_COLOR,(0,0,100,300),BOARD_CURSOR_EDGE)
         self.game.draw_item(self.cursor_rect,(self.cursor_rectx, self.cursor_recty))
 
     def blit_screen(self):
-        # TODO: should be imported from Menu cls
-
-        self.game.window.blit(self.game.display, (0,0))
+        # TODO: should be a Game mtod
+        self.game.window.blit(self.board, (0,0))
         pygame.display.update() # "send to monitor"
         self.game.reset_keys()
 
