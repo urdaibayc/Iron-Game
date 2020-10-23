@@ -32,8 +32,8 @@ class Game():
         ##########################
         self.board_rect =  pygame.Rect(0, 0, GAME_BOARD_H, GAME_BOARD_W)
         self.side_bar_rect = pygame.Rect(0, 0, GAME_BOARD_H, DISPLAY_W - GAME_BOARD_W)
-        ROWS, COLS = 10
-        BLOCK_SIZE =
+        self.block_rect = pygame.Rect(BLOCK_RECT)
+
 
         ##########################
         #### Text, fonts, etc. ###
@@ -50,6 +50,7 @@ class Game():
         self.curr_menu = self.main_menu
         self.game_board = GameBoard(self)
         self.side_bar = SideBar(self)
+        self.piece = Piece(self)
 
         ###########################
         #### Game Loop ############

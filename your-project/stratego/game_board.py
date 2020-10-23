@@ -1,5 +1,6 @@
 import pygame
 from stratego import *
+from .pieces impor Piece
 
 class GameBoard():
     # TODO: calcular BOARD_SIDE_X, BOARD_SIDE_X & add to class variables
@@ -11,35 +12,59 @@ class GameBoard():
         ##########################
         #### board grid ##########
         ##########################
-        self.block_rect = (self.board.get_height()/10, self.board.get_width()/10)
+        self.reg = []
 
-
+        ##########################
+        #### cursor ##########
+        ##########################
+        self.cursor_rect = pygame.Rect(BLOCK_RECT)
         self.cursor_rectx = 0
         self.cursor_recty = 0
 
-    def draw_grid(self):
+        ##########################
+        #### Movement ############
+        ##########################
+        self.selected_piece = None
 
+    ##########################
+    #### functions ###########
+    ##########################
+    def draw_grid(self):
+        pass
 
     def display_board(self):
         while self.game.playing == True:
+            #####################
+            #### basic setup ####
+            #####################
             self.game.check_events()
             self.check_input()
             self.board.fill(self.board_color)
-            # draw grid
+
+            #####################
+            #### draw grid ####
+            #####################
             self.draw_grid()
             # draw cursor
             self.blit_screen()
-
-
 
     def blit_board(self):
         self.game.blit_item(self, display, self.board, (0, 5))
         pass
 
-    def draw_board_cursor(self):
-        # TODO: fix cursor draw settings
-        pygame.draw.rect(self.cursor_rect,BOARD_CURSOR_COLOR,(0,0,100,300),BOARD_CURSOR_EDGE)
-        self.game.draw_item(self.cursor_rect,(self.cursor_rectx, self.cursor_recty))
+     def create_board(self):
+        for row in range(ROWS):
+            self.reg.append([])
+            for col in range(COLS):
+                if col % 2 == ((row +  1) % 2):
+                    if row < 3:
+                        self.board[row].append(Piece(row, col, WHITE))
+                    elif row > 4:
+                        self.board[row].append(Piece(row, col, RED))
+                    else:
+                        self.board[row].append(0)
+                else:
+                    self.board[row].append(0)
 
     def blit_screen(self):
         # TODO: should be a Game mtod
