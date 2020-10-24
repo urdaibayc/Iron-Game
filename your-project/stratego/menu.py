@@ -113,13 +113,20 @@ class CreditsMenu(Menu):
     def __init__(self, game):
         Menu.__init__(self, game)
 
+    def check_input(self):
+
+        if self.game.BACK_KEY or self.game.START_KEY:
+            self.game.curr_menu = self.game.main_menu
+            self.run_display = False
+
     def display_menu(self):
         self.run_display = True
         while self.run_display:
-            if self.game.START_KEY or self.game.BACK_KEY:
-                self.game.curr_menu = self.game.main_menu
-                self.run_display = False
-        self.game.display.fill(self.game.BLACK)
-        self.game.draw_text('Credits', MENU_FONT_SIZE, self.game.DISPLAY_W / 2, self.game.DISPLAY_h / 2 - 40)
-        self.game.draw_text('Made by my', MENU_FONT_SIZE, self.game.DISPLAY_W / 2, self.game.DISPLAY_h / 2 - 20)
-        self.blit_screen()
+            self.game.check_events()
+            self.check_input()
+            self.game.display.fill(self.game.BLACK)
+            self.game.draw_text('Credits', MENU_FONT_SIZE, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 150)
+            self.game.draw_text('Made by: ', MENU_FONT_SIZE, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2)
+            self.game.draw_text('Cosme Urdaibay', MENU_FONT_SIZE, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 +40)
+            self.game.draw_text('urdaibayc@gmail.com', MENU_FONT_SIZE, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 80)
+            self.blit_screen()

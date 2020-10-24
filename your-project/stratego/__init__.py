@@ -2,7 +2,7 @@
 #### GAME SETTINGS ####
 ##########################
 DISPLAY_H = 600
-DISPLAY_W = 1000
+DISPLAY_W = 900
 GAME_FONT_SIZE = 20
 
 ##########################
@@ -15,25 +15,25 @@ MENU_FONT_SIZE = 20
 ##########################
 #### SIDE BAR ####
 ##########################
-SIDE_BAR_W = DISPLAY_W -400
-SIDE_BAR_H = DISPLAY_H -100
-SIDE_BAR_X = DISPLAY_W - SIDE_BAR_W
-SIDE_BAR_Y = 0
+SIDE_BAR_W = 300
+SIDE_BAR_H = DISPLAY_H
 SIDE_BAR_COLOR = (65, 123, 90)
 
 ##########################
 #### GAME BOARD #####
 ##########################
-GAME_BOARD_W = DISPLAY_W - SIDE_BAR_W
-GAME_BOARD_H = DISPLAY_H - 100
-GAME_GRID_BACKGROUND = (62, 105, 144)
+GAME_BOARD_W = 500
+GAME_BOARD_H = 500
+GAME_BOARD_BACKGROUND = (254, 225, 130)
 GAME_GRID_COLOR = (254, 225, 130)
 ROWS = COLS = 10
+GRAY = (28, 128, 128)
 
 ##########################
 #### CURSOR ##############
 ##########################
-BLOCK_RECT = (0,0, GAME_BOARD_H/ROWS, GAME_BOARD_W/COLS)
+BLOCK_H = GAME_BOARD_H/ROWS
+BLOCK_W = GAME_BOARD_W/COLS
 BOARD_CURSOR_COLOR = (221, 96, 49)
 BOARD_CURSOR_EDGE = 3
 
