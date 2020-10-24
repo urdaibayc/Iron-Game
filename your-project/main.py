@@ -1,4 +1,5 @@
 from stratego.game import Game
+import pygame
 
 def main():
     # TODO:
@@ -9,8 +10,11 @@ def main():
     icon = pygame.image.load(os.path.join(image_path, 'strategy.png'))
     """
     # TODO: Save game
+    # TODO: regulate FPS
+
     g = Game()
     while g.running:
+
         g.curr_menu.display_menu()
         g.game_loop()
 

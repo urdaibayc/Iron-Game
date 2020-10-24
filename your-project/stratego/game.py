@@ -66,7 +66,6 @@ class Game():
         ###########################
 
     def check_events(self):
-        print('game.check_events()')
         # TODO: set esc key
         """sets key flags to True if triggered by the user"""
         for event in pygame.event.get():
@@ -107,7 +106,6 @@ class Game():
         ###########################
 
     def draw_text(self, text, size, x,y):
-        print(f'game.draw_text()')
         font = pygame.font.Font(self.font_name, size)
         text_surface = font.render(text, True, self.WHITE) # font.render(text, antialiasing, color)
         text_rect = text_surface.get_rect() # rect obj(x,y, heigth, width)
