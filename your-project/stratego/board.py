@@ -70,3 +70,6 @@ class GameBoard:
                     self.reg[row].append(Piece(self.game, row, col, RED))
                 else:
                     self.reg[row].append(0)
+
+    def move(self, piece, row, col):
+        pass

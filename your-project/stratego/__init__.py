@@ -43,8 +43,8 @@ BOARD_CURSOR_EDGE = 3
 ##########################
 BLUE = (0, 0, 255)
 RED = (255, 0, 0)
-
-
+# TODO: figure out how to load images =/
+#ICON = pygame.image.load('./static/strategy.png')
 ##########################
 #### ATTRIBUTIONS ########
 ##########################
