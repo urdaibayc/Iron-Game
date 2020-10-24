@@ -1,11 +1,12 @@
 import pygame
+from stratego import MENU_CURSOR_W,MENU_CURSOR_H,MENU_FONT_SIZE
 
 class Menu():
     def __init__(self, game):
         self.game = game
         self.mid_w, self.mid_h = self.game.DISPLAY_W/2, self.game.DISPLAY_H/2
         self.run_display = True
-        self.cursor_rect = pygame.Rect(0,0,20,20) # Rect(x,y,w,h)
+        self.cursor_rect = pygame.Rect(0,0,MENU_CURSOR_W,MENU_CURSOR_H)
         self.offset = -100
 
     def draw_cursor(self):
@@ -31,10 +32,10 @@ class MainMenu(Menu):
             self.game.check_events()
             self.check_input()
             self.game.display.fill(self.game.BLACK)
-            self.game.draw_text('Main Menu', 20, self.game.DISPLAY_W/2, self.game.DISPLAY_H/2 -20)
-            self.game.draw_text('Start Game', 20, self.startx, self.starty)
-            self.game.draw_text('Options', 20, self.optionsx, self.optionsy)
-            self.game.draw_text('Credits', 20, self.creditsx, self.creditsy)
+            self.game.draw_text('Main Menu', MENU_FONT_SIZE, self.game.DISPLAY_W/2, self.game.DISPLAY_H/2 -20)
+            self.game.draw_text('Start Game', MENU_FONT_SIZE, self.startx, self.starty)
+            self.game.draw_text('Options', MENU_FONT_SIZE, self.optionsx, self.optionsy)
+            self.game.draw_text('Credits', MENU_FONT_SIZE, self.creditsx, self.creditsy)
             self.draw_cursor()
             self.blit_screen()
 
@@ -85,9 +86,9 @@ class OptionsMenu(Menu):
             self.game.check_events()
             self.check_input()
             self.game.display.fill(self.game.BLACK)
-            self.game.draw_text('Options', 20, self.game.DISPLAY_W/2, self.game.DISPLAY_H/2 -30)
-            self.game.draw_text('Volume', 15, self.volx, self.voly)
-            self.game.draw_text('Options', 20, self.controlsx, self.controlsy)
+            self.game.draw_text('Options', MENU_FONT_SIZE, self.game.DISPLAY_W/2, self.game.DISPLAY_H/2 -30)
+            self.game.draw_text('Volume', MENU_FONT_SIZE, self.volx, self.voly)
+            self.game.draw_text('Options', MENU_FONT_SIZE, self.controlsx, self.controlsy)
             self.draw_cursor()
             self.blit_screen()
 
@@ -112,13 +113,20 @@ class CreditsMenu(Menu):
     def __init__(self, game):
         Menu.__init__(self, game)
 
+    def check_input(self):
+
+        if self.game.BACK_KEY or self.game.START_KEY:
+            self.game.curr_menu = self.game.main_menu
+            self.run_display = False
+
     def display_menu(self):
         self.run_display = True
         while self.run_display:
-            if self.game.START_KEY or self.game.BACK_KEY:
-                self.game.curr_menu = self.game.main_menu
-                self.run_display = False
-        self.game.display.fill(self.game.BLACK)
-        self.game.draw_text('Credits', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_h / 2 - 40)
-        self.game.draw_text('Made by my', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_h / 2 - 20)
-        self.blit_screen()
+            self.game.check_events()
+            self.check_input()
+            self.game.display.fill(self.game.BLACK)
+            self.game.draw_text('Credits', MENU_FONT_SIZE, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 150)
+            self.game.draw_text('Made by: ', MENU_FONT_SIZE, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2)
+            self.game.draw_text('Cosme Urdaibay', MENU_FONT_SIZE, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 +40)
+            self.game.draw_text('urdaibayc@gmail.com', MENU_FONT_SIZE, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 80)
+            self.blit_screen()
