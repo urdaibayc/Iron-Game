@@ -30,5 +30,12 @@ class Piece:
         pygame.draw.rect(self.game.display, self.color,(self.x, self.y, self.in_w, self.in_h))
         self.game.draw_text(self.value, 20, self.text_x, self.text_y)
 
+    def move(self, row, col):
+        self.last_poss = (self.x, self.y)
+        self.row = row
+        self.col = col
+        self.calculate_pos()
+
+
     def __repr__(self):
         return str(self.color)

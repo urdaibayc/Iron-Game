@@ -72,4 +72,9 @@ class GameBoard:
                     self.reg[row].append(0)
 
     def move(self, piece, row, col):
-        pass
+        self.board[piece.row][piece.col], self.board[row][col] = self.board[row][col], self.board[piece.row][piece.col]
+        piece.move(row, col)
+        # Evaluate if fight, same team, etc.
+
+    def get_piece(self, row, col):
+        return self.reg[row][col]

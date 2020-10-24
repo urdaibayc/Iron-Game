@@ -46,12 +46,14 @@ class Game():
         ###########################
     def game_loop(self):
         """Controls the game states, resets key flags to False"""
+        piece = self.game_board.get_piece(0, 1)
         while self.playing:
             self.check_events()
             if self.START_KEY:
                 self.playing = False
             self.display.fill(self.BLACK)
             self.game_board.display_board()
+            self.game_board.move(piece, 4, 3)
 
             ###########################
             #### updates game window ##
@@ -91,7 +93,7 @@ class Game():
                 if event.key == pygame.K_RIGHT:
                     self.RIGHT_KEY = True
                     print('RIGHT_KEY')
-                if event.key == pygame.K_UP:
+                if event.key == pygame.K_LEFT:
                     self.LEFT_KEY = True
                     print('LEFT_KEY_KEY')
 
