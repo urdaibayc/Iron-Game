@@ -23,6 +23,7 @@ class Game():
         ##########################
         self.running, self.playing = True, False
         self.UP_KEY, self.DOWN_KEY,  self.RIGHT_KEY,  self.LEFT_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False, False, False
+        self.MOUSE_POS = ()
         #self.font_name = 'font.TTF'
 
         ##########################
@@ -46,14 +47,12 @@ class Game():
         ###########################
     def game_loop(self):
         """Controls the game states, resets key flags to False"""
-        piece = self.game_board.get_piece(0, 1)
         while self.playing:
             self.check_events()
             if self.START_KEY:
                 self.playing = False
             self.display.fill(self.BLACK)
             self.game_board.display_board()
-            self.game_board.move(piece, 4, 3)
 
             ###########################
             #### updates game window ##
@@ -80,27 +79,25 @@ class Game():
                     self.curr_menu.run_display = False
                 if event.key == pygame.K_RETURN:
                     self.START_KEY = True
-                    print('START_KEY')
                 if event.key == pygame.K_BACKSPACE:
                     self.BACK_KEY = True
-                    print('BACK_KEY')
                 if event.key == pygame.K_DOWN:
                     self.DOWN_KEY = True
-                    print('DOWN_KEY')
                 if event.key == pygame.K_UP:
                     self.UP_KEY = True
-                    print('UP_KEY')
                 if event.key == pygame.K_RIGHT:
                     self.RIGHT_KEY = True
-                    print('RIGHT_KEY')
                 if event.key == pygame.K_LEFT:
                     self.LEFT_KEY = True
-                    print('LEFT_KEY_KEY')
+            else:
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    self.MOUSE_POS = pygame.mouse.get_pos()
+
 
     def reset_keys(self):
         """sets key flags to false"""
-        print('game.reset_keys()')
         self.UP_KEY, self.DOWN_KEY, self.RIGHT_KEY, self.LEFT_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False, False, False
+        self.MOUSE_POS = ()
 
 
         ###########################

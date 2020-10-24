@@ -78,3 +78,9 @@ class GameBoard:
 
     def get_piece(self, row, col):
         return self.reg[row][col]
+
+    def get_row_col_from_mouse(self):
+        x, y = self.game.MOUSE_POS
+        row = y//self.square_h
+        col = x//self.square_w
+        return row, col
