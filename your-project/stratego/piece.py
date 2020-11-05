@@ -8,9 +8,9 @@ class Piece:
         self.col = col
         self.color = color
         self.value = '1'
-        self.selected = False
+        self.selected = True
         self.last_poss = ()
-        self.turn = True
+        self.turn = False
         self.out_w = BLOCK_W-10
         self.in_w = BLOCK_W-12
         self.out_h = BLOCK_H-10
@@ -28,13 +28,17 @@ class Piece:
     def draw_piece(self):
         pygame.draw.rect(self.game.display, self.game.BLACK,(self.x, self.y, self.out_w, self.out_h))
         pygame.draw.rect(self.game.display, self.color,(self.x, self.y, self.in_w, self.in_h))
-        self.game.draw_text(self.value, 20, self.text_x, self.text_y)
+        self.show_value()
 
     def move(self, row, col):
         self.last_poss = (self.x, self.y)
         self.row = row
         self.col = col
         self.calculate_pos()
+
+    def show_value(self):
+        if self.turn == True:
+            self.game.draw_text(self.value, 20, self.text_x, self.text_y)
 
 
     def __repr__(self):

@@ -28,7 +28,7 @@ GAME_BOARD_H = 500
 GAME_BOARD_BACKGROUND = (254, 225, 130)
 GAME_GRID_COLOR = (254, 225, 130)
 ROWS = COLS = 10
-GRAY = (28, 128, 128)
+SQ_COLOR = (28, 128, 128)
 
 ##########################
 #### CURSOR ##############
@@ -43,8 +43,12 @@ BOARD_CURSOR_EDGE = 3
 ##########################
 BLUE = (0, 0, 255)
 RED = (255, 0, 0)
+# set initial red & bue pieces on board
+BLUE_POS = 2
+RED_POS = 7
 # TODO: figure out how to load images =/
 #ICON = pygame.image.load('./static/strategy.png')
+
 ##########################
 #### ATTRIBUTIONS ########
 ##########################

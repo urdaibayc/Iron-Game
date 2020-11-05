@@ -34,12 +34,16 @@ class GameBoard:
         self.game.reset_keys()
 
     def display_board(self):
+        """Checks for input, blits board image to game surface & draws pieces possition acording to self.reg"""
         while self.game.playing == True:
             self.game.check_events()
             self.check_input()
             self.game.display.fill(self.game.BLACK)
             # board
             self.draw_squares()
+
+            # Checks for pieces pos in self.reg & calls piece method draw self
+            # TODO: It may need to be a func on its own
             for row in range(ROWS):
                 for col in range(COLS):
                     piece = self.reg[row][col]
@@ -51,10 +55,12 @@ class GameBoard:
             self.blit_screen()
 
     def draw_squares(self):
+        """Draws the squares that make the board image"""
         pygame.draw.rect(self.game.display, self.board_color, (self.board_x, self.board_y,self.board_w, self.board_h), 0)
+        # draws de colored squares to make the board image
         for row in range(ROWS):
             for col in range(row % 2, COLS, 2):
-                pygame.draw.rect(self.game.display, GRAY, ((row*self.square_h)+self.board_y, (col *self.square_w)+self.board_x,self.square_h,self.square_h),0)
+                pygame.draw.rect(self.game.display, SQ_COLOR, ((row*self.square_h)+self.board_y, (col *self.square_w)+self.board_x,self.square_h,self.square_h),0)
 
     def draw_side_bar(self):
         # font = pygame.font.Font(self.font_name, size)
@@ -72,16 +78,20 @@ class GameBoard:
         text_rect.center = (x,y) # coordinates
         self.game.display.blit(text_surface,text_rect)
 
-
     def populate_board(self):
+        """Draws the pieces at their initial possition"""
         for row in range(ROWS):
+            # appends an empty list to the registry self.reg that represents rows
             self.reg.append([])
             for col in range(COLS):
-                if row < 2:
+                if row < BLUE_POS:
+                    # appends the blue piece of to the corresponding initial row poss
                     self.reg[row].append(Piece(self.game, row, col, BLUE))
-                elif row > 7:
+                elif row > RED_POS:
+                    # appends the red piece obj to the corresponding initial row poss
                     self.reg[row].append(Piece(self.game, row, col, RED))
                 else:
+                    # appends zero to the empty pos
                     self.reg[row].append(0)
 
     def move(self, piece, row, col):
