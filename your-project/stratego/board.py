@@ -63,7 +63,7 @@ class GameBoard:
         # text_rect.center = ((self.side_bar_w // 2, self.side_bar_h + 100) # coordinates
         # self.game.display.blit(text_surface,text_rect)
         pygame.draw.rect(self.game.display, self.side_bar_color, (self.side_bar_x, 0,self.side_bar_w, self.side_bar_h), 0)
-        self.draw_text('STRATEGOpyHack',40,self.side_bar_x+self.side_bar_w//2,50)
+        self.draw_text('STRATEGOpyHack',30,self.side_bar_x+self.side_bar_w//2,50)
 
     def draw_text(self, text, size, x,y):
         font = pygame.font.Font(self.game.font_name, size)
