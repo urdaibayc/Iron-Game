@@ -57,7 +57,20 @@ class GameBoard:
                 pygame.draw.rect(self.game.display, GRAY, ((row*self.square_h)+self.board_y, (col *self.square_w)+self.board_x,self.square_h,self.square_h),0)
 
     def draw_side_bar(self):
+        # font = pygame.font.Font(self.font_name, size)
+        # text_surface = font.render('text', True, self.WHITE) # font.render(text, antialiasing, color)
+        # text_rect = text_surface.get_rect() # rect obj(x,y, heigth, width)
+        # text_rect.center = ((self.side_bar_w // 2, self.side_bar_h + 100) # coordinates
+        # self.game.display.blit(text_surface,text_rect)
         pygame.draw.rect(self.game.display, self.side_bar_color, (self.side_bar_x, 0,self.side_bar_w, self.side_bar_h), 0)
+        self.draw_text('STRATEGOpyHack',40,self.side_bar_x+self.side_bar_w//2,50)
+
+    def draw_text(self, text, size, x,y):
+        font = pygame.font.Font(self.game.font_name, size)
+        text_surface = font.render(text, True, self.game.WHITE) # font.render(text, antialiasing, color)
+        text_rect = text_surface.get_rect() # rect obj(x,y, heigth, width)
+        text_rect.center = (x,y) # coordinates
+        self.game.display.blit(text_surface,text_rect)
 
 
     def populate_board(self):
