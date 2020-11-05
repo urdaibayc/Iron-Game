@@ -3,6 +3,7 @@ from stratego import *
 
 class Piece:
     def __init__(self, game, row, col, color):
+        # TODO: figure out las position
         self.game = game
         self.row = row
         self.col = col
@@ -22,6 +23,7 @@ class Piece:
         self.text_y = int(self.y + self.in_h//2)
 
     def calculate_pos(self):
+        """Calculates x & y position"""
         self.x = BLOCK_W*self.col+55
         self.y = BLOCK_H*self.row+55
 
@@ -31,7 +33,6 @@ class Piece:
         self.show_value()
 
     def move(self, row, col):
-        self.last_poss = (self.x, self.y)
         self.row = row
         self.col = col
         self.calculate_pos()
@@ -39,7 +40,6 @@ class Piece:
     def show_value(self):
         if self.turn == True:
             self.game.draw_text(self.value, 20, self.text_x, self.text_y)
-
 
     def __repr__(self):
         return str(self.color)

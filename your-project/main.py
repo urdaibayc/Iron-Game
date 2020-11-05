@@ -4,6 +4,7 @@ import pygame
 def main():
     # TODO:
     """
+    the reference to file is made from main
     current_path = os.path.dirname(__file__)
     resource_path = os.path.join(current_path, 'stratego')
     image_path = os.path.join(resource_path, 'static')

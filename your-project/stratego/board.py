@@ -35,6 +35,8 @@ class GameBoard:
 
     def display_board(self):
         """Checks for input, blits board image to game surface & draws pieces possition acording to self.reg"""
+        piece = self.get_piece(0,1)
+        self.move(piece, 4,3)
         while self.game.playing == True:
             self.game.check_events()
             self.check_input()
@@ -95,7 +97,8 @@ class GameBoard:
                     self.reg[row].append(0)
 
     def move(self, piece, row, col):
-        self.board[piece.row][piece.col], self.board[row][col] = self.board[row][col], self.board[piece.row][piece.col]
+        """gets the piece player whants to move and where to move"""
+        self.reg[piece.row][piece.col], self.reg[row][col] = self.reg[row][col], self.reg[piece.row][piece.col]
         piece.move(row, col)
         # Evaluate if fight, same team, etc.
 
