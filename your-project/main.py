@@ -1,4 +1,5 @@
 from stratego.game import Game
+from stratego import FPS
 import pygame
 
 def main():
@@ -20,6 +21,7 @@ def main():
 
         g.curr_menu.display_menu()
         g.game_loop()
+        g.clock.tick(FPS)
 
 
 

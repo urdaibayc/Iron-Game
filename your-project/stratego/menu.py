@@ -1,5 +1,5 @@
 import pygame
-from stratego import MENU_CURSOR_W,MENU_CURSOR_H,MENU_FONT_SIZE
+from stratego import * 
 
 class Menu():
     def __init__(self, game):
@@ -38,7 +38,7 @@ class MainMenu(Menu):
             self.game.draw_text('Credits', MENU_FONT_SIZE, self.creditsx, self.creditsy)
             self.draw_cursor()
             self.blit_screen()
-            self.game.clock.tick(20)
+            self.game.clock.tick(FPS)
 
     def move_cursor(self):
         if self.game.DOWN_KEY:
@@ -92,7 +92,7 @@ class OptionsMenu(Menu):
             self.game.draw_text('Options', MENU_FONT_SIZE, self.controlsx, self.controlsy)
             self.draw_cursor()
             self.blit_screen()
-            self.game.clock.tick(20)
+            self.game.clock.tick(FPS)
 
     def check_input(self):
         if self.game.BACK_KEY:
@@ -132,4 +132,4 @@ class CreditsMenu(Menu):
             self.game.draw_text('Cosme Urdaibay', MENU_FONT_SIZE, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 +40)
             self.game.draw_text('urdaibayc@gmail.com', MENU_FONT_SIZE, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 80)
             self.blit_screen()
-            self.game.clock.tick(20)
+            self.game.clock.tick(FPS)

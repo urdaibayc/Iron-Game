@@ -1,6 +1,6 @@
 import pygame
 from .menu import *
-from stratego import *
+import stratego
 from .piece import Piece
 
 class GameBoard:
@@ -56,6 +56,7 @@ class GameBoard:
                         piece.draw_piece()
             # send to display
             self.blit_screen()
+            self.game.clock.tick(FPS)
 
     def draw_squares(self):
         """Draws the squares that make the board image"""
@@ -109,6 +110,6 @@ class GameBoard:
 
     def get_row_col_from_mouse(self):
         x, y = self.game.MOUSE_POS
-        row = int(y//self.square_h)
-        col = int(x//self.square_w)
+        row = int((y - self.board_y)/self.square_h)
+        col = int((x - self.board_x)/self.square_w)
         return row, col

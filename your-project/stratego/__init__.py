@@ -5,6 +5,7 @@ import pygame
 DISPLAY_H = 600
 DISPLAY_W = 900
 GAME_FONT_SIZE = 20
+FPS = 10
 
 ##########################
 #### MENU SETINGS ####

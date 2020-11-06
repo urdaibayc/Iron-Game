@@ -60,7 +60,7 @@ class Game():
             self.window.blit(self.display, (0,0))
             pygame.display.update()
             self.reset_keys()
-            self.clock.tick(20)
+            self.clock.tick(FPS)
 
 
         ###########################
@@ -86,14 +86,14 @@ class Game():
                     self.DOWN_KEY = True
                 if event.key == pygame.K_UP:
                     self.UP_KEY = True
-                if event.key == pygame.K_RIGHT:
-                    self.RIGHT_KEY = True
-                if event.key == pygame.K_LEFT:
-                    self.LEFT_KEY = True
+                # if event.key == pygame.K_RIGHT:
+                #     self.RIGHT_KEY = True
+                # if event.key == pygame.K_LEFT:
+                #     self.LEFT_KEY = True
             if event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = pygame.mouse.get_pos()
-                if x > self.game_board.board_x and x < self.game_board.board_x + self.game_board.board_w and self.game_board.board_y < y and y < self.game_board.board_y + self.game_board.board_w:
-                    self.MOUSE_POS = pygame.mouse.get_pos()
+                if x > self.game_board.board_x and x < self.game_board.board_x + self.game_board.board_w and self.game_board.board_y < y and y < self.game_board.board_y + self.game_board.board_h:
+                    self.MOUSE_POS = (x,y)
 
     def reset_keys(self):
         """sets key flags to false"""
