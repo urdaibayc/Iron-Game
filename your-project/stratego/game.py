@@ -7,7 +7,6 @@ class Game():
 
     def __init__(self):
         # TODO: fix icon
-
         #########################
         #### Pygame & window ####
         #########################
@@ -17,6 +16,7 @@ class Game():
         self.DISPLAY_W, self.DISPLAY_H = DISPLAY_W, DISPLAY_H
         self.window = pygame.display.set_mode(((self.DISPLAY_W, self.DISPLAY_H)))
         self.display = pygame.Surface((self.DISPLAY_W, self.DISPLAY_H))
+        self.clock = pygame.time.Clock()
 
         ##########################
         #### Game flags ##########
@@ -60,6 +60,7 @@ class Game():
             self.window.blit(self.display, (0,0))
             pygame.display.update()
             self.reset_keys()
+            self.clock.tick(20)
 
 
         ###########################
@@ -89,19 +90,15 @@ class Game():
                     self.RIGHT_KEY = True
                 if event.key == pygame.K_LEFT:
                     self.LEFT_KEY = True
-            else:
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    x, y = pygame.mouse.get_pos()
-                    if x > self.game_board.board_x and x < self.game_board.board_x + self.game_board.board_w:
-                        if self.game_board.board_y < y and y < self.game_board.board_y + self.game_board.board_w:
-                            self.MOUSE_POS = pygame.mouse.get_pos()
-
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = pygame.mouse.get_pos()
+                if x > self.game_board.board_x and x < self.game_board.board_x + self.game_board.board_w and self.game_board.board_y < y and y < self.game_board.board_y + self.game_board.board_w:
+                    self.MOUSE_POS = pygame.mouse.get_pos()
 
     def reset_keys(self):
         """sets key flags to false"""
         self.UP_KEY, self.DOWN_KEY, self.RIGHT_KEY, self.LEFT_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False, False, False
         self.MOUSE_POS = ()
-
 
         ###########################
         #### Draw & blit ##########

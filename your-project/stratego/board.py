@@ -43,9 +43,10 @@ class GameBoard:
             self.game.check_events()
             self.check_input()
             self.game.display.fill(self.game.BLACK)
+            # side_bar
+            self.draw_side_bar()
             # board
             self.draw_squares()
-
             # Checks for pieces pos in self.reg & calls piece method draw self
             # TODO: It may need to be a func on its own
             for row in range(ROWS):
@@ -53,8 +54,6 @@ class GameBoard:
                     piece = self.reg[row][col]
                     if piece != 0:
                         piece.draw_piece()
-            # side_bar
-            self.draw_side_bar()
             # send to display
             self.blit_screen()
 
