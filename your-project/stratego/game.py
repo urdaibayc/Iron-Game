@@ -91,7 +91,10 @@ class Game():
                     self.LEFT_KEY = True
             else:
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    self.MOUSE_POS = pygame.mouse.get_pos()
+                    x, y = pygame.mouse.get_pos()
+                    if x > self.game_board.board_x and x < self.game_board.board_x + self.game_board.board_w:
+                        if self.game_board.board_y < y and y < self.game_board.board_y + self.game_board.board_w:
+                            self.MOUSE_POS = pygame.mouse.get_pos()
 
 
     def reset_keys(self):

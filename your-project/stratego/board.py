@@ -27,6 +27,10 @@ class GameBoard:
     def check_input(self):
         if self.game.START_KEY:
             self.game.playing = False
+        if self.game.MOUSE_POS != ():
+            row, col = self.get_row_col_from_mouse()
+            piece = self.get_piece(row, col)
+            self.move(piece, 4,3)
 
     def blit_screen(self):
         self.game.window.blit(self.game.display, (0,0))
@@ -35,8 +39,6 @@ class GameBoard:
 
     def display_board(self):
         """Checks for input, blits board image to game surface & draws pieces possition acording to self.reg"""
-        piece = self.get_piece(0,1)
-        self.move(piece, 4,3)
         while self.game.playing == True:
             self.game.check_events()
             self.check_input()
@@ -98,6 +100,7 @@ class GameBoard:
 
     def move(self, piece, row, col):
         """gets the piece player whants to move and where to move"""
+        # piece.last_poss = (piece.x, piece.y)
         self.reg[piece.row][piece.col], self.reg[row][col] = self.reg[row][col], self.reg[piece.row][piece.col]
         piece.move(row, col)
         # Evaluate if fight, same team, etc.
@@ -107,6 +110,6 @@ class GameBoard:
 
     def get_row_col_from_mouse(self):
         x, y = self.game.MOUSE_POS
-        row = y//self.square_h
-        col = x//self.square_w
+        row = int(y//self.square_h)
+        col = int(x//self.square_w)
         return row, col
