@@ -8,13 +8,12 @@
 
 ## Content
 - A copy of the Stratego board game featuring a 3 windowed menu and the main board window. 
-
-- https://www.pygame.org/wiki/about(#links)
+- https://www.pygame.org/wiki/about
 
 <a name="project-description"></a>
 
 ## Project Description
-The code behind it requires comprehension of finite game loops, state machines, python classes, inheritance and functions.
+The code behind it requires comprehension of game loops, state machines, python classes, inheritance and functions.
 
 
 <a name="links"></a>
