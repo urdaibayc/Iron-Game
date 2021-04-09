@@ -15,6 +15,12 @@
 ## Project Description
 The code behind it requires comprehension of game loops, state machines, python classes, inheritance and functions.
 
+## Notes
+
+This is an ongoing project:
+-Do visit the discussion:
+
+* [It helps me out!](https://github.com/urdaibayc/Iron-Game/discussions/new?category=general&welcome_text=true)
 
 <a name="links"></a>
 
