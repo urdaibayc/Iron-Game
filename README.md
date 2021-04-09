@@ -1,32 +1,26 @@
 <img src="https://bit.ly/2VnXWr2" alt="Ironhack Logo" width="100"/>
 
-# Title of My Project
-*[Your Name]*
+# Stratego GameHack: Graphical game, developed with pygame.
 
-*[Your Cohort, Campus & Date]*
+*Cosme Urdaibay*
+
+*Data Analytics, México & sep20 - mar21]*
 
 ## Content
-- [Project Description](#project-description)
-- [Workflow](#workflow)
-- [Organization](#organization)
-- [Links](#links)
+- A copy of the Stratego board game featuring a 3 windowed menu and the main board window. 
+
+- https://www.pygame.org/wiki/about(#links)
 
 <a name="project-description"></a>
 
 ## Project Description
-Write a short description of your project. Write 1-2 sentences about what what you chose to build and why. 
+The code behind it requires comprehension of finite game loops, state machines, python classes, inheritance and functions.
 
 <a name="workflow"></a>
 
-## Workflow
-Outline the workflow you used in your project. What were the steps you went through?
-
-<a name="organization"></a>
-
-## Organization
-How did you organize yourself? Did you use any tools?
 
 <a name="links"></a>
 
-## Links
-Include the links to your repository and slides. Feel free to include any other links associated to your project. 
+## Reach out!
+
+https://www.linkedin.com/in/cosme-urdaibay/
