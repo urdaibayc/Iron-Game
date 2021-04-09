@@ -4,7 +4,7 @@
 
 *Cosme Urdaibay*
 
-*Data Analytics, México & sep20 - mar21]*
+*Data Analytics, México & sep20 - mar21*
 
 ## Content
 - A copy of the Stratego board game featuring a 3 windowed menu and the main board window. 
@@ -15,8 +15,6 @@
 
 ## Project Description
 The code behind it requires comprehension of finite game loops, state machines, python classes, inheritance and functions.
-
-<a name="workflow"></a>
 
 
 <a name="links"></a>
