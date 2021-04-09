@@ -19,5 +19,4 @@ The code behind it requires comprehension of game loops, state machines, python 
 <a name="links"></a>
 
 ## Reach out!
-
-https://www.linkedin.com/in/cosme-urdaibay/
+* [LinkedIn](https://www.linkedin.com/in/cosme-urdaibay/)
