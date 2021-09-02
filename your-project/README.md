@@ -34,18 +34,18 @@ Figured out it didn't work.
 Research projects with similar features.
 Research documentation.
 get conscious of time.
-Refactor code.                                                       DEADLINE
+Refactor code.                                                     
 Figured out it didn't work.
 
 Research
-Refactor.
-Panic                                            DEADLINE
+Refactor
+Panic
 Figured out it didn't work.
 
 Research
 Beyond Panicking
 Refactor.
-wrap-up                      DEADLINE
+wrap-up
 Handin
 
 Figure out everything is ok
@@ -54,15 +54,10 @@ Figure out everything is ok
 <a name="organization"></a>
 
 ## Organization
-How did you organize yourself? Did you use any tools?
-
+notion.so
 
 
 <a name="links"></a>
 
 ## Links
-Include the links to your repository, slides and trello. Feel free to include any other links associated to your project.
 
-[Repository](https://github.com/)  
-[Slides](https://slides.com/)  
-[Trello](https://trello.com/en)  
